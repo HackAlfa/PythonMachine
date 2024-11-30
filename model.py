@@ -3,6 +3,7 @@ import pickle
 import yaml
 import pandas as pd
 from request_model import RequestModel
+import traceback
 
 logging.basicConfig(
     level=logging.INFO,
@@ -23,9 +24,11 @@ class Model:
                 with open(config['path_to_model'], 'rb') as f:
                     self.model = pickle.load(f)
             except:
+                logger.error(f'{traceback.format_exc()}')
                 raise RuntimeError(
                     f'There is no model by path: {config["path_to_model"]}')
         except:
+            logger.error(f'{traceback.format_exc()}')            
             raise RuntimeError(
                 f'There is no config file by path: {config_path}')
 
