@@ -20,11 +20,11 @@ class Model:
             with open(config_path) as f:
                 config = yaml.safe_load(f)
             try:
-                with open(config['path'], 'rb') as f:
+                with open(config['path_to_model'], 'rb') as f:
                     self.model = pickle.load(f)
             except:
                 raise RuntimeError(
-                    f'There is no model by path: {config["path"]}')
+                    f'There is no model by path: {config["path_to_model"]}')
         except:
             raise RuntimeError(
                 f'There is no config file by path: {config_path}')

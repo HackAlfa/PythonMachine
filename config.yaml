@@ -1,1 +1,1 @@
-path: "./catboost_model.pkl"
+path_to_model: "./catboost_model.pkl"
