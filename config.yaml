@@ -1,1 +1,5 @@
-path_to_model: "/app/models/catboost_model.pkl"
+path_to_model_catboost: "/app/models/catboost_model.pkl"
+path_to_model_kmeans: "/app/models/kmeans_model.pkl"
+path_to_model_decision_tree: "/app/models/kmeans_model.pkl"
+
+is_multi_model_enabled: true

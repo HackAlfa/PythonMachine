@@ -1,9 +1,10 @@
-import logging
-import pickle
-import yaml
-import pandas as pd
 from request_model import RequestModel
+from typing import Literal
+import logging
+import pandas as pd
+import pickle
 import traceback
+import yaml
 
 logging.basicConfig(
     level=logging.INFO,
@@ -16,17 +17,18 @@ logger = logging.getLogger(__name__)
 
 
 class Model:
-    def __init__(self, config_path: str):
+    def __init__(self, config_path: str, model_name: Literal["catboost", "kmeans", "decision_tree"]):
         try:
             with open(config_path) as f:
                 config = yaml.safe_load(f)
+            path_to_model = f"path_to_model_{model_name}"
             try:
-                with open(config['path_to_model'], 'rb') as f:
+                with open(config[path_to_model], 'rb') as f:
                     self.model = pickle.load(f)
             except:
                 logger.error(f'{traceback.format_exc()}')
                 raise RuntimeError(
-                    f'There is no model by path: {config["path_to_model"]}')
+                    f'There is no model by path: {config[path_to_model]}')
         except:
             logger.error(f'{traceback.format_exc()}')            
             raise RuntimeError(
