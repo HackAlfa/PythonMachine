@@ -20,7 +20,7 @@ logger.info(f'{path_to_config=}')
 model = Model(path_to_config)
 
 
-@app.get("/predict")
+@app.post("/predict")
 async def predict(data: RequestModel):
     try:
         prediction = model.predict(data)
