@@ -1,4 +1,4 @@
-from PythonMachine.functions import explain_decision, get_interpretesions
+from functions import explain_decision, get_interpretesions
 
 def get_model_by_buisness_rules(model_dict, context, is_multi_model_enabled):
     if is_multi_model_enabled:
